@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add user</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
+    <label for="name">Имя</label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error name</div>
+    <br/>
+    <label for="lastName">Фамилия</label>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <br/>
+    <label for="age">Возраст</label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error name</div>
+    <br/>
+    <label for="email">E-mail</label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error name</div>
+    <br/>
+    <!--<label for="roles">Права доступа</label>
+    <input type="text" th:field="*{roles}" id="roles"/>-->
+    <input type="submit" value="Сохранить"/>
+</form>
+
+<br/>
+<br/>
+<hr/>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign out"/>
+</form>
+</body>
+</html>
